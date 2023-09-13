@@ -1,0 +1,32 @@
+ADO# 1279599
+Improved error reporting for the CSF
+
+
+
+
+The current CSF Error reporting is generic. Here is the error message shown to the user in MOSES Executive,
+
+           *** WARNING: Export to Common Solution File Unsuccessful 
+
+The idea of this feature is to improve the reporting so that the user gets to have a better understanding on which step the error has occurred. There are debug logs that point to the error in which step the error has occurred. 
+
+The idea is to send the error message from the C++ interface to FORTRAN so that the error can be displayed properly rather than a generic Warning to the user in MOSES Executive.
+
+For this error logs from the following functions need to be reported back and combined
+
+
+    csf_write_to_db -- Creates the CSF files: CSF db, CSF output file and SACS model file
+    csf_run_post  -- Perform the POST analysis and create postvue database
+    csf_run_fatigue  -- Runs fatigue
+    csf_run_jointcan -- Perform the JOINT CAN analysis
+    csf_run_jointcan_iso  -- Perform the JOINT CAN analysis for ISO codes
+    csf_write_jointcan_cards  -- Writes the Joint Can cards to the CSF db
+
+
+
+
+// debug log is not logging during release
+
+
+// error messages for the dev exist but need to be passed back
+// error messages for the user do not exist yet it seems
